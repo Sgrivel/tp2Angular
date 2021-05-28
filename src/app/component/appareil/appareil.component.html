@@ -1,0 +1,22 @@
+<li class="list-group-item w-100" [ngClass]="{'list-group-item-success': appareilStatus === 'on',
+                                            'list-group-item-danger': appareilStatus === 'off'}">
+
+    <div class="card" style="width: 18rem;">
+    
+        <div class="card-body">
+        
+            <div class="flex">
+            
+                <h5 class="card-title">{{appareilName}}</h5>
+                <input type="text" [(ngModel)]="appareilName">
+                <!-- <span class="ml-a">{{device.created_at | date:'short'}}</span> -->
+            
+            </div>
+            
+            <button class="btn btn-success" (click)="changeState()">Change State </button>
+                    
+        </div>
+    
+    </div>
+    
+</li>

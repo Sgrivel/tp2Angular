@@ -1,0 +1,11 @@
+<button class="btn btn-success" (click)="switchOnAll()">All On </button>
+<button class="btn btn-danger" (click)="switchOffAll()">All Off </button>
+
+<ul class="list-group">
+    <app-appareil
+    *ngFor="let appareil of appareils"
+    [appareilName]="appareil.name"
+    [appareilStatus]="appareil.status"
+    >
+    </app-appareil>
+</ul>
