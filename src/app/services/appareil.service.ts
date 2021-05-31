@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppareilComponent } from '../component/appareil/appareil.component';
 
 @Injectable({
   providedIn: 'root'
@@ -7,23 +9,23 @@ export class AppareilService {
 
   public appareils = [
     {
-      id: 1,
+      id: 0,
       name: 'Machine à laver',
       status: 'off'
     },
     {
-      id: 2,
+      id: 1,
       name: 'Frigo',
       status: 'on'
     },
     {
-      id: 3,
+      id: 2,
       name: 'Ordinateur',
       status: 'off'
     }
   ]
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   switchOnAll(): void {
     this.appareils.forEach(element => {
@@ -37,5 +39,17 @@ export class AppareilService {
         element.status = 'off'
       });
     }
+  }
+
+  getAppareilById(id: number): any {
+    const appareil = this.appareils.find(
+      (s) => {
+        return s.id === id;
+      }
+    );
+    if (!appareil) {
+      this.router.navigate(['error']);
+    }
+    return appareil;
   }
 }

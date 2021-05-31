@@ -2,10 +2,10 @@
 <button class="btn btn-danger" (click)="switchOffAll()">All Off </button>
 
 <ul class="list-group">
-    <app-appareil
-    *ngFor="let appareil of appareils"
+    <app-appareil  *ngFor="let appareil of appareils; let i = index"
     [appareilName]="appareil.name"
     [appareilStatus]="appareil.status"
-    >
+    [index]="i" 
+    [id]="appareil.id">
     </app-appareil>
 </ul>

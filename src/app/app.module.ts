@@ -11,11 +11,20 @@ import { HomeComponent } from './component/home/home.component';
 import { AppareilViewComponent } from './component/appareil-view/appareil-view.component';
 import { AppareilComponent } from './component/appareil/appareil.component';
 import { FormsModule } from '@angular/forms';
+import { AuthComponent } from './component/auth/auth.component';
+import { AuthService } from './services/auth.service';
+import { SingleAppareilComponent } from './component/single-appareil/single-appareil.component';
+import { ErrorComponent } from './component/error/error.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'device', component: AppareilViewComponent}
+  {path: 'device', component: AppareilViewComponent},
+  {path: 'device/:id', component: SingleAppareilComponent},
+  {path: 'auth', component: AuthComponent},
+  {path: '', component: AppareilViewComponent},
+  {path: 'error', component: ErrorComponent },
+  {path: '**', redirectTo: 'error' }
 ]
 
 @NgModule({
@@ -26,7 +35,10 @@ const appRoutes: Routes = [
     HomeComponent,
     BlogComponent,
     AppareilViewComponent,
-    AppareilComponent
+    AppareilComponent,
+    AuthComponent,
+    SingleAppareilComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +46,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 

@@ -9,8 +9,7 @@
             
                 <h5 class="card-title">{{appareilName}}</h5>
                 <input type="text" [(ngModel)]="appareilName">
-                <!-- <span class="ml-a">{{device.created_at | date:'short'}}</span> -->
-            
+                <a [routerLink]="[index]">Détail</a>            
             </div>
             
             <button class="btn btn-success" (click)="changeState()">Change State </button>
