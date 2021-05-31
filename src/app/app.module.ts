@@ -15,12 +15,13 @@ import { AuthComponent } from './component/auth/auth.component';
 import { AuthService } from './services/auth.service';
 import { SingleAppareilComponent } from './component/single-appareil/single-appareil.component';
 import { ErrorComponent } from './component/error/error.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'device', component: AppareilViewComponent},
-  {path: 'device/:id', component: SingleAppareilComponent},
+  {path: 'device', canActivate: [AuthGuardService], component: AppareilViewComponent },
+  {path: 'device/:id', canActivate: [AuthGuardService], component: SingleAppareilComponent },
   {path: 'auth', component: AuthComponent},
   {path: '', component: AppareilViewComponent},
   {path: 'error', component: ErrorComponent },
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 
